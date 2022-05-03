@@ -10,7 +10,7 @@ function Container(props) {
   function save_bookmark(name) {
     console.log(name);
     //API call to TO SAVE IT IN SERVER
-    fetch("/uses").then((response) => {
+    fetch("/create_bookmark").then((response) => {
       const status = response.status;
       console.log("status = ", status);
 
