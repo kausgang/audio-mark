@@ -1,22 +1,20 @@
 function Container(props) {
-  // const [value, setValue] = React.useState(0);
+
   const [slider_value,setSlider_value]=React.useState(0)
   const [audio_value,setAudio_value]=React.useState(0)
 
   //THIS IS FOR MANUAL SLIDER MOVEMENT
   function slider_handler(newValue) {
-    // setValue(newValue);
+
     setSlider_value(newValue)
-    // IF MANUALLY SLIDER MOVED, THE SONG SHOULD SEEK
-    // update_slider(newValue)
-    // setAudio_value(newValue)
+
   }
 
-  // // THIS IS FOR PLAYBACK SLIDER MOVEMENT
-  // function update_slider(newValue){
-  //   // setSlider_value(newValue)
-  //   console.log("here")
-  // }
+
+  function save_bookmark(name){
+    console.log(name)
+    //API call to TO SAVE IT IN SERVER
+  }
 
   return (
     <div>
@@ -25,7 +23,8 @@ function Container(props) {
       {/* SHOW THE SLIDER VALUE */}
       <p>{slider_value}</p>
       <PlaybackControl seek_progressbar={slider_handler} current_seek={slider_value} audio_value={audio_value} sound={props.sound}/>
-      {/* <PlaybackControl  current_seek={slider_value} sound={props.sound}/> */}
+      <br></br>
+      <BookmarkCreator timestamp={slider_value} save_bookmark={save_bookmark}/>
     </div>
   );
 }

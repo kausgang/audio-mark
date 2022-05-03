@@ -156,9 +156,11 @@ function PlaybackControl(props) {
       {/* <br></br> */}
       {/* <p>{timestamp}</p> */}
       {/* <br></br> */}
-      <button onClick={back1sec}>Back 1sec</button>
-      <button onClick={back10sec}>Back 10sec</button>
+     
+     
       <button onClick={back60sec}>Back 1min</button>
+      <button onClick={back10sec}>Back 10sec</button>
+      <button onClick={back1sec}>Back 1sec</button>
 
 
       <button id="play_pause" className='paused' onClick={play}>Click to {playing?'Pause':'Play'}</button>
