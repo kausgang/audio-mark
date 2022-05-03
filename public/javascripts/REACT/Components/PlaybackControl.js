@@ -65,25 +65,65 @@ function PlaybackControl(props) {
   };
 
 
-  // const stop = () => {
-  //   let button_class = document.getElementById("play_pause").getAttribute('class')
-    
-  //   if(button_class==='playing') //now i can only pause it
-  //   {document.getElementById("play_pause").setAttribute('class','paused')}
-    
-  //   // CHANGE BUTTON TEXT 
-  //   // playing?setPlaying(false):setPlaying(true)
-  //   console.log("playing = " , playing)
-  //   setPlaying(false)
+  const back1sec = () => {
 
-  //   // SEEK TO 0
-  //   sound.seek(0)
-  //   // props.seek_progressbar(sound.seek(0))
 
-  //   sound.stop();
-  // };
+    // GET CURRENT SEEK TIME FROM PARENT
+    setTimestamp(props.current_seek)
+    // SEEK TO TMESTAMP
+    sound.seek(timestamp-1);
 
-  const seek10 = () => {
+    // UPDATE THE SEEK COUNTER IN PROGRESS BAR
+    props.seek_progressbar(timestamp-1)
+
+  
+  };
+
+
+  const back10sec = () => {
+
+
+    // GET CURRENT SEEK TIME FROM PARENT
+    setTimestamp(props.current_seek)
+    // SEEK TO TMESTAMP
+    sound.seek(timestamp-10);
+
+    // UPDATE THE SEEK COUNTER IN PROGRESS BAR
+    props.seek_progressbar(timestamp-10)
+
+  
+  };
+
+  const back60sec = () => {
+
+
+    // GET CURRENT SEEK TIME FROM PARENT
+    setTimestamp(props.current_seek)
+    // SEEK TO TMESTAMP
+    sound.seek(timestamp-60);
+
+    // UPDATE THE SEEK COUNTER IN PROGRESS BAR
+    props.seek_progressbar(timestamp-60)
+
+  
+  };
+
+  const forward1sec = () => {
+
+
+    // GET CURRENT SEEK TIME FROM PARENT
+    setTimestamp(props.current_seek)
+    // SEEK TO TMESTAMP
+    sound.seek(timestamp+1);
+
+    // UPDATE THE SEEK COUNTER IN PROGRESS BAR
+    props.seek_progressbar(timestamp+1)
+
+  
+  };
+
+
+  const forward10sec = () => {
 
 
     // GET CURRENT SEEK TIME FROM PARENT
@@ -97,15 +137,36 @@ function PlaybackControl(props) {
   
   };
 
+  const forward60sec = () => {
+
+
+    // GET CURRENT SEEK TIME FROM PARENT
+    setTimestamp(props.current_seek)
+    // SEEK TO TMESTAMP
+    sound.seek(timestamp+60);
+
+    // UPDATE THE SEEK COUNTER IN PROGRESS BAR
+    props.seek_progressbar(timestamp+60)
+
+  
+  };
+
   return (
     <div>
       {/* <br></br> */}
       {/* <p>{timestamp}</p> */}
       {/* <br></br> */}
+      <button onClick={back1sec}>Back 1sec</button>
+      <button onClick={back10sec}>Back 10sec</button>
+      <button onClick={back60sec}>Back 1min</button>
+
+
       <button id="play_pause" className='paused' onClick={play}>Click to {playing?'Pause':'Play'}</button>
       {/* <button onClick={pause}>Click to pause</button> */}
       {/* <button onClick={stop}>Click to stop</button> */}
-      <button onClick={seek10}>Forward 10sec</button>
+      <button onClick={forward1sec}>Forward 1sec</button>
+      <button onClick={forward10sec}>Forward 10sec</button>
+      <button onClick={forward60sec}>Forward 1min</button>
     </div>
   );
 }
