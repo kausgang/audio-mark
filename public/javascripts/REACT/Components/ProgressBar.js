@@ -3,18 +3,27 @@ function ProgressBar(props) {
 
   let sound = props.sound;
   const [duration, setDuration] = React.useState(0);
-  // DO IT IN COMPONENT DIDMOUNT
-  // sound.on("load", setDuration(sound.duration));
+  
+
+
 
   const collect_value = (event, newvalue) => {
     props.value(newvalue);
   };
 
+  // DO IT IN COMPONENT DIDUPDATE
   // FIND OUT MAX DURATION OF THE AUDIO FILE AND SEND THAT AS PROPS TO SLIDER COMPONENT
+    React.useEffect(()=>{
+      setDuration(sound.duration()) 
+      console.log("duration is ",duration)  
+    })
+
+
   return (
     <div>
-      <Slider max={500} onChange={collect_value} />{" "}
-      {/* CHANGE 500 TO DURATION */}
+      <Slider max={duration>100?duration:100} onChange={collect_value} />{" "}
+      {/* IT'LL TAKE TIME TO LOAD THE AUDIO. TO BEGIN WITH, MAKE SLIDER LENGTH=100(DEFAULT LENGTH OF SLIDER).
+      IF USER CHANGES THE SLIDER, MAKE DURATION=SOUND DURATION */}
     </div>
   );
 }
