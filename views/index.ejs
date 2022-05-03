@@ -2,10 +2,51 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <!-- material-ui CDN -->
+    <script
+      src="https://unpkg.com/@mui/material@latest/umd/material-ui.development.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load Bable -->
+    <!-- order is important...BABEL should come at last -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div id="root"></div>
+    <script type="text/babel">
+      const {
+        colors,
+        CssBaseline,
+        ThemeProvider,
+        Typography,
+        Container,
+        createTheme,
+        Box,
+        SvgIcon,
+        Link,
+        Slider,
+      } = MaterialUI;
+    </script>
+    <!-- APP component -->
+    <script
+      type="text/babel"
+      src="javascripts/REACT/Components/ProgressBar.js"
+    ></script>
+    <!-- Index component -->
+    <script type="text/babel" src="/javascripts/REACT/index.js"></script>
   </body>
 </html>
