@@ -1,38 +1,16 @@
-function Container() {
+function Container(props) {
   const [value, setValue] = React.useState(0);
 
   function handler(newValue) {
-    console.log("called");
     setValue(newValue);
   }
 
   return (
     <div>
-      <ProgressBar value={handler} />
+      <ProgressBar value={handler} sound={props.sound} />
+      {/* SHOW THE SLIDER VALUE */}
       <p>{value}</p>
+      <PlaybackControl />
     </div>
   );
 }
-
-// class Container extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       value: 0,
-//     };
-//   }
-
-//   handler(newvalue) {
-//     console.log("here");
-//     this.setState({ value: newvalue });
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <ProgressBar value={this.handler} />
-//         <p>value is {this.state.value}</p>
-//       </div>
-//     );
-//   }
-// }

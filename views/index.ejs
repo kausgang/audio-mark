@@ -21,6 +21,9 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- load howler for audio -->
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script>
+
     <!-- Load Bable -->
     <!-- order is important...BABEL should come at last -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -28,23 +31,16 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      const {
-        colors,
-        CssBaseline,
-        ThemeProvider,
-        Typography,
-        Container,
-        createTheme,
-        Box,
-        SvgIcon,
-        Link,
-        Slider,
-      } = MaterialUI;
+      const { Slider } = MaterialUI;
     </script>
     <!-- APP component -->
     <script
       type="text/babel"
       src="javascripts/REACT/Components/ProgressBar.js"
+    ></script>
+    <script
+      type="text/babel"
+      src="javascripts/REACT/Components/PlaybackControl.js"
     ></script>
     <script
       type="text/babel"

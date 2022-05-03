@@ -1,18 +1,25 @@
 function ProgressBar(props) {
-  // const [value, setValue] = React.useState(0);
+  // COLLECT THE SOUND FILE TO FIND DURATION
+
+  let sound = props.sound;
+  const [duration, setDuration] = React.useState(0);
+  // DO IT IN COMPONENT DIDMOUNT
+  // sound.on("load", setDuration(sound.duration));
 
   const collect_value = (event, newvalue) => {
     props.value(newvalue);
   };
 
+  // FIND OUT MAX DURATION OF THE AUDIO FILE AND SEND THAT AS PROPS TO SLIDER COMPONENT
   return (
     <div>
-      <Slider onChange={collect_value} />
+      <Slider max={500} onChange={collect_value} />{" "}
+      {/* CHANGE 500 TO DURATION */}
     </div>
   );
 }
 
-// BELOW IS ALSO WORKING
+// BELOW CODE SHOWS THE BASIC OPERATION IN CLASS BASED APPROACH
 
 // class ProgressBar extends React.Component {
 //   constructor(props) {
