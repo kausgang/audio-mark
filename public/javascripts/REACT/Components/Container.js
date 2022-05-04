@@ -64,7 +64,8 @@ function Container(props) {
         filename={props.filename}
       />
       <br></br>
-      <BookmarkList filename={props.filename} sound={props.sound} />
+      {/* <BookmarkList filename={props.filename} sound={props.sound} /> */}
+      <BookmarkList filename={props.filename} />
     </div>
   );
 }
