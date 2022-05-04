@@ -27,6 +27,7 @@ function BookmarkList(props) {
   function give_timestamp(e) {
     let timestamp_value=e.target.attributes.data_timestamp.value
     console.log(timestamp_value)
+    alert(timestamp_value)
 
     // props.bookmark_seek
     // console.log(e.target.attributes.data())
