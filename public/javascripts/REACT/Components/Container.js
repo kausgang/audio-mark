@@ -9,13 +9,14 @@ function Container(props) {
     setSlider_value(newValue);
   }
 
-  function save_bookmark(bookmark_name) {
+  function save_bookmark(bookmark_name, timestamp) {
     //API call to TO SAVE IT IN SERVER
     fetch("/create_bookmark", {
       method: "POST",
       body: JSON.stringify({
         filename: filename,
         bookmark_name: bookmark_name,
+        timestamp: timestamp,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -24,7 +25,7 @@ function Container(props) {
       const status = response.status;
       console.log("status = ", status);
 
-      if (status === 404 || status === 500) {
+      if (status !== 200) {
         alert("error occured writing to bookmark record");
       } else {
         alert("Bookmark created successfully");
