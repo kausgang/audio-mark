@@ -33,6 +33,14 @@ function Container(props) {
     });
   }
 
+
+
+  // function bookmark_seek(timestamp) {
+  //   setAudio_value(timestamp)
+    
+  // }
+
+
   return (
     <div>
       {/* SEND THE SOUND VARIABLE TO IT'S CHILDREN */}
@@ -56,7 +64,7 @@ function Container(props) {
         filename={props.filename}
       />
       <br></br>
-      <BookmarkList filename={props.filename} />
+      <BookmarkList filename={props.filename} sound={props.sound} />
     </div>
   );
 }

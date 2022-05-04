@@ -1,11 +1,9 @@
 function BookmarkList(props) {
   // GET LIST OF BOOKMARK THROUGH API CALL
   let filename = props.filename;
-  let bookmark_names = [],bookmark_timestamps=[]
-  let list,listItems;
+  let [response_data,setResponse_data]=React.useState(null);
+  // let sound=props.sound
 
-  const [bookmark,setBookmark]=React.useState([])
-  // const [listItems,setListItems]=React.useState([])
 
 
   React.useEffect(()=>{
@@ -16,20 +14,8 @@ function BookmarkList(props) {
     .then((response) => response.json())
     .then((response) => {
       // Do something with response.
-      console.log(response)
-    for(let i=0;i<(response.length-1);i++){
 
-
-      bookmark_names.push(response[i].split(',')[0])
-      bookmark_timestamps.push(response[i].split(',')[1])
-
-      
-    }
-
-    setBookmark(bookmark_names)
-
-    console.log(bookmark_names)
-
+      setResponse_data(response.slice(0, -1)) //remove the last element
    
     });
 
@@ -38,11 +24,40 @@ function BookmarkList(props) {
   //  and after values in the array have changed. Since we pass an empty array, it will run only after mounting
 
 
+  function give_timestamp(e) {
+    let timestamp_value=e.target.attributes.data_timestamp.value
+    console.log(timestamp_value)
+
+    // props.bookmark_seek
+    // console.log(e.target.attributes.data())
+  }
  
 
+function Createlist(props) {
+  
+  const response=props.response
+  console.log(response)
+
+  if(response===null)
+  return null //for the initial render
+
+  let listItems = response.map((element,index)=>
 
 
+    <li key={index} onClick={give_timestamp}><a href="#"  data_timestamp={element.split(',')[1]}>{element.split(',')[0]}</a></li>
+
+  );
+  
+  return (
+    <div><ul>{listItems}</ul></div>
+    
+  );
+  
+
+}
 
 
-  return <div>{list}</div> ;
+  // return <Createlist response={response_data} sound={props.sound} />
+  return <Createlist response={response_data}  />
+    
 }
