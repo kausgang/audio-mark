@@ -1,20 +1,30 @@
 function Container(props) {
   const [slider_value, setSlider_value] = React.useState(0);
   const [audio_value, setAudio_value] = React.useState(0);
+  //   AUDIO FILENAME
+  let filename = props.filename;
 
   //THIS IS FOR MANUAL SLIDER MOVEMENT
   function slider_handler(newValue) {
     setSlider_value(newValue);
   }
 
-  function save_bookmark(name) {
-    console.log(name);
+  function save_bookmark(bookmark_name) {
     //API call to TO SAVE IT IN SERVER
-    fetch("/create_bookmark").then((response) => {
+    fetch("/create_bookmark", {
+      method: "POST",
+      body: JSON.stringify({
+        filename: filename,
+        bookmark_name: bookmark_name,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((response) => {
       const status = response.status;
       console.log("status = ", status);
 
-      if (status === 404) {
+      if (status === 404 || status === 500) {
         alert("error occured writing to bookmark record");
       } else {
         alert("Bookmark created successfully");
@@ -39,7 +49,11 @@ function Container(props) {
         sound={props.sound}
       />
       <br></br>
-      <BookmarkCreator timestamp={slider_value} save_bookmark={save_bookmark} />
+      <BookmarkCreator
+        timestamp={slider_value}
+        save_bookmark={save_bookmark}
+        filename={props.filename}
+      />
     </div>
   );
 }
