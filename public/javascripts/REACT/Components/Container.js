@@ -46,7 +46,7 @@ function Container(props) {
       <PlaybackControl
         seek_progressbar={slider_handler}
         current_seek={slider_value}
-        audio_value={audio_value}
+        // audio_value={audio_value}
         sound={props.sound}
       />
       <br></br>
@@ -55,6 +55,8 @@ function Container(props) {
         save_bookmark={save_bookmark}
         filename={props.filename}
       />
+      <br></br>
+      <BookmarkList filename={props.filename} />
     </div>
   );
 }

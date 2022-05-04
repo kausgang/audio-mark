@@ -9,6 +9,8 @@ var usersRouter = require("./routes/users");
 
 // CREATE BOOKMARK ROUTER
 var create_bookmark_Router = require("./routes/create_bookmark");
+// LIST BOOKMARK ROUTER
+var list_bookmark_Router = require("./routes/list_bookmark");
 
 var app = express();
 
@@ -25,6 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/create_bookmark", create_bookmark_Router);
+app.use("/list_bookmark", list_bookmark_Router);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
