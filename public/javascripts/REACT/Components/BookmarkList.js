@@ -13,7 +13,7 @@ function BookmarkList(props) {
 
         setResponse_data(response.slice(0, -1)); //remove the last element
       });
-  }, []); //AN EMPTY ARRY TO MAKE USEEFFECT TO RUN ONCE AND BEHAVE LIKE COMPONENTDIDMOUNT
+  },[]); //AN EMPTY ARRY TO MAKE USEEFFECT TO RUN ONCE AND BEHAVE LIKE COMPONENTDIDMOUNT
   // When using useEffect with a second array argument, React will run the callback after mounting (initial render)
   //  and after values in the array have changed. Since we pass an empty array, it will run only after mounting
 

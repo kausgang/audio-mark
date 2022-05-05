@@ -58,6 +58,7 @@ function Container(props) {
         save_bookmark={save_bookmark}
         filename={props.filename}
       />
+      <p>Refresh the page for newly added bookmark to showup.</p>
       <br></br>
       {/* <BookmarkList filename={props.filename} sound={props.sound} /> */}
       <BookmarkList filename={props.filename} bookmark_seek={bookmark_seek} />
