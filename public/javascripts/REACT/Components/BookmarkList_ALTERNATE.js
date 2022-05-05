@@ -1,8 +1,7 @@
 function BookmarkList(props) {
   // GET LIST OF BOOKMARK THROUGH API CALL
   let filename = props.filename;
-  // let [response_data, setResponse_data] = React.useState(null);
-  let [response_data, setResponse_data] = React.useState([]);
+  let [response_data, setResponse_data] = React.useState(null);
   // let sound=props.sound
 
   React.useEffect(() => {
@@ -19,7 +18,7 @@ function BookmarkList(props) {
   // When using useEffect with a second array argument, React will run the callback after mounting (initial render)
   //  and after values in the array have changed. Since we pass an empty array, it will run only after mounting
 
-  function send_timestamp(e) {
+  function give_timestamp(e) {
     let timestamp_value = e.target.attributes.data_timestamp.value;
     console.log(timestamp_value);
     alert(timestamp_value);
@@ -28,36 +27,27 @@ function BookmarkList(props) {
     // console.log(e.target.attributes.data())
   }
 
-  // function Createlist(props) {
-  //   const response = props.response;
-  //   console.log(response);
+  function Createlist(props) {
+    const response = props.response;
+    console.log(response);
 
-  //   if (response === null) return null; //for the initial render
+    if (response === null) return null; //for the initial render
 
-  //   let listItems = response.map((element, index) => (
-  //     <li key={index} onClick={give_timestamp}>
-  //       <a href="#" data_timestamp={element.split(",")[1]}>
-  //         {element.split(",")[0]}
-  //       </a>
-  //     </li>
-  //   ));
+    let listItems = response.map((element, index) => (
+      <li key={index} onClick={give_timestamp}>
+        <a href="#" data_timestamp={element.split(",")[1]}>
+          {element.split(",")[0]}
+        </a>
+      </li>
+    ));
 
-  //   return (
-  //     <div>
-  //       <ul>{listItems}</ul>
-  //     </div>
-  //   );
-  // }
+    return (
+      <div>
+        <ul>{listItems}</ul>
+      </div>
+    );
+  }
 
-  return (
-    <ul>
-      {response_data.map((element, index) => (
-        <li key={index} onClick={send_timestamp}>
-          <a href="#" data_timestamp={element.split(",")[1]}>
-            {element.split(",")[0]}
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
+  // return <Createlist response={response_data} sound={props.sound} />
+  return <Createlist response={response_data} />;
 }
