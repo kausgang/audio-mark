@@ -1,9 +1,7 @@
 function BookmarkList(props) {
   // GET LIST OF BOOKMARK THROUGH API CALL
   let filename = props.filename;
-  // let [response_data, setResponse_data] = React.useState(null);
   let [response_data, setResponse_data] = React.useState([]);
-  // let sound=props.sound
 
   React.useEffect(() => {
     URL = "/list_bookmark?filename=" + filename;
@@ -21,33 +19,8 @@ function BookmarkList(props) {
 
   function send_timestamp(e) {
     let timestamp_value = e.target.attributes.data_timestamp.value;
-    console.log(timestamp_value);
-    alert(timestamp_value);
-
-    // props.bookmark_seek
-    // console.log(e.target.attributes.data())
+    props.bookmark_seek(timestamp_value);
   }
-
-  // function Createlist(props) {
-  //   const response = props.response;
-  //   console.log(response);
-
-  //   if (response === null) return null; //for the initial render
-
-  //   let listItems = response.map((element, index) => (
-  //     <li key={index} onClick={give_timestamp}>
-  //       <a href="#" data_timestamp={element.split(",")[1]}>
-  //         {element.split(",")[0]}
-  //       </a>
-  //     </li>
-  //   ));
-
-  //   return (
-  //     <div>
-  //       <ul>{listItems}</ul>
-  //     </div>
-  //   );
-  // }
 
   return (
     <ul>

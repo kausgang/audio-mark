@@ -1,6 +1,6 @@
 function Container(props) {
   const [slider_value, setSlider_value] = React.useState(0);
-  const [audio_value, setAudio_value] = React.useState(0);
+
   //   AUDIO FILENAME
   let filename = props.filename;
 
@@ -33,13 +33,9 @@ function Container(props) {
     });
   }
 
-
-
-  // function bookmark_seek(timestamp) {
-  //   setAudio_value(timestamp)
-    
-  // }
-
+  function bookmark_seek(timestamp) {
+    setSlider_value(parseInt(timestamp));
+  }
 
   return (
     <div>
@@ -54,7 +50,6 @@ function Container(props) {
       <PlaybackControl
         seek_progressbar={slider_handler}
         current_seek={slider_value}
-        // audio_value={audio_value}
         sound={props.sound}
       />
       <br></br>
@@ -65,7 +60,7 @@ function Container(props) {
       />
       <br></br>
       {/* <BookmarkList filename={props.filename} sound={props.sound} /> */}
-      <BookmarkList filename={props.filename} />
+      <BookmarkList filename={props.filename} bookmark_seek={bookmark_seek} />
     </div>
   );
 }

@@ -1,154 +1,122 @@
-
 function PlaybackControl(props) {
-
-  let sound = props.sound
+  let sound = props.sound;
   // initialize timestamp to 0 second
   const [timestamp, setTimestamp] = React.useState(0);
-  const [playing,setPlaying]= React.useState(false)
-
- 
+  const [playing, setPlaying] = React.useState(false);
 
   // MOVING SLIDER WILL UPDATE CURRENTSEEK AND RERENDER PLAYBACK
-  React.useEffect(()=>{
+  React.useEffect(() => {
+    setTimestamp(props.current_seek);
 
-    setTimestamp(props.current_seek)
-    
-    
-    if(playing){
-      
+    if (playing) {
       setTimeout(() => {
-        props.seek_progressbar(Math.round(sound.seek()))
+        props.seek_progressbar(Math.round(sound.seek()));
       }, 1000);
     }
 
+    // // BOOKARK SEEK HAS BEEN CLICKED
+    // if (props.audio_value !== null) {
+    //   console.log("audio_value=", props.audio_value);
+    //   // GET CURRENT SEEK TIME FROM PARENT
+    //   setTimestamp(props.audio_value);
+    //   // SEEK TO TMESTAMP
+    //   sound.seek(timestamp);
 
-  })
-
+    //   // UPDATE THE SEEK COUNTER IN PROGRESS BAR
+    //   props.seek_progressbar(timestamp);
+    // }
+  });
 
   const play = () => {
-
     // let intervalID = 0
 
-    
-
-
     // UPDATE TIMESTAMP ONLY WHEN IT IS PLAYING
-    let button_class = document.getElementById("play_pause").getAttribute('class')
-    
-    if(button_class==='playing') //now i can only pause it
-    {
+    let button_class = document
+      .getElementById("play_pause")
+      .getAttribute("class");
+
+    if (button_class === "playing") {
+      //now i can only pause it
       // CLEAR INTERVAL
-      // clearInterval(intervalID) 
+      // clearInterval(intervalID)
       // PAUSE THE MUSIC
-      sound.pause()
+      sound.pause();
       //CHANGE CLASSNAME
-      document.getElementById("play_pause").setAttribute('class','paused')
-    }
-    else 
-    {
+      document.getElementById("play_pause").setAttribute("class", "paused");
+    } else {
       // GET CURRENT SEEK TIME FROM PARENT
-      setTimestamp(props.current_seek)
+      setTimestamp(props.current_seek);
       // SEEK TO TMESTAMP
       sound.seek(timestamp);
-      
-
-
 
       // PLAY MUSIC
-      sound.play()
+      sound.play();
       //CHANGE CLASSNAME TO RERENDER COMPONENT
-      document.getElementById("play_pause").setAttribute('class','playing')
+      document.getElementById("play_pause").setAttribute("class", "playing");
     }
 
-    // CHANGE BUTTON TEXT 
-    playing?setPlaying(false):setPlaying(true)
+    // CHANGE BUTTON TEXT
+    playing ? setPlaying(false) : setPlaying(true);
   };
-
 
   const back1sec = () => {
-
-
     // GET CURRENT SEEK TIME FROM PARENT
-    setTimestamp(props.current_seek)
+    setTimestamp(props.current_seek);
     // SEEK TO TMESTAMP
-    sound.seek(timestamp-1);
+    sound.seek(timestamp - 1);
 
     // UPDATE THE SEEK COUNTER IN PROGRESS BAR
-    props.seek_progressbar(timestamp-1)
-
-  
+    props.seek_progressbar(timestamp - 1);
   };
 
-
   const back10sec = () => {
-
-
     // GET CURRENT SEEK TIME FROM PARENT
-    setTimestamp(props.current_seek)
+    setTimestamp(props.current_seek);
     // SEEK TO TMESTAMP
-    sound.seek(timestamp-10);
+    sound.seek(timestamp - 10);
 
     // UPDATE THE SEEK COUNTER IN PROGRESS BAR
-    props.seek_progressbar(timestamp-10)
-
-  
+    props.seek_progressbar(timestamp - 10);
   };
 
   const back60sec = () => {
-
-
     // GET CURRENT SEEK TIME FROM PARENT
-    setTimestamp(props.current_seek)
+    setTimestamp(props.current_seek);
     // SEEK TO TMESTAMP
-    sound.seek(timestamp-60);
+    sound.seek(timestamp - 60);
 
     // UPDATE THE SEEK COUNTER IN PROGRESS BAR
-    props.seek_progressbar(timestamp-60)
-
-  
+    props.seek_progressbar(timestamp - 60);
   };
 
   const forward1sec = () => {
-
-
     // GET CURRENT SEEK TIME FROM PARENT
-    setTimestamp(props.current_seek)
+    setTimestamp(props.current_seek);
     // SEEK TO TMESTAMP
-    sound.seek(timestamp+1);
+    sound.seek(timestamp + 1);
 
     // UPDATE THE SEEK COUNTER IN PROGRESS BAR
-    props.seek_progressbar(timestamp+1)
-
-  
+    props.seek_progressbar(timestamp + 1);
   };
 
-
   const forward10sec = () => {
-
-
     // GET CURRENT SEEK TIME FROM PARENT
-    setTimestamp(props.current_seek)
+    setTimestamp(props.current_seek);
     // SEEK TO TMESTAMP
-    sound.seek(timestamp+10);
+    sound.seek(timestamp + 10);
 
     // UPDATE THE SEEK COUNTER IN PROGRESS BAR
-    props.seek_progressbar(timestamp+10)
-
-  
+    props.seek_progressbar(timestamp + 10);
   };
 
   const forward60sec = () => {
-
-
     // GET CURRENT SEEK TIME FROM PARENT
-    setTimestamp(props.current_seek)
+    setTimestamp(props.current_seek);
     // SEEK TO TMESTAMP
-    sound.seek(timestamp+60);
+    sound.seek(timestamp + 60);
 
     // UPDATE THE SEEK COUNTER IN PROGRESS BAR
-    props.seek_progressbar(timestamp+60)
-
-  
+    props.seek_progressbar(timestamp + 60);
   };
 
   return (
@@ -156,14 +124,14 @@ function PlaybackControl(props) {
       {/* <br></br> */}
       {/* <p>{timestamp}</p> */}
       {/* <br></br> */}
-     
-     
+
       <button onClick={back60sec}>Back 1min</button>
       <button onClick={back10sec}>Back 10sec</button>
       <button onClick={back1sec}>Back 1sec</button>
 
-
-      <button id="play_pause" className='paused' onClick={play}>Click to {playing?'Pause':'Play'}</button>
+      <button id="play_pause" className="paused" onClick={play}>
+        Click to {playing ? "Pause" : "Play"}
+      </button>
       {/* <button onClick={pause}>Click to pause</button> */}
       {/* <button onClick={stop}>Click to stop</button> */}
       <button onClick={forward1sec}>Forward 1sec</button>
