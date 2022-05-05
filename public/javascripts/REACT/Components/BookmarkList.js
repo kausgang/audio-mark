@@ -22,8 +22,35 @@ function BookmarkList(props) {
     props.bookmark_seek(timestamp_value);
   }
 
+
+  //ADD BOOKMARK TO THE LIST ONCE CREATE BOOKMARK IS CLICKED
+  React.useEffect(()=>{
+    if(props.bookmark_timestamp[0]!=null){
+      let ul=document.getElementById('bookmark_list');
+      // console.log(bookmark_list)
+      let li = document.createElement("li");
+      li.addEventListener("click",send_timestamp)
+      var aTag = document.createElement('a');
+      aTag.setAttribute('href',"#");
+      aTag.innerText = props.bookmark_timestamp[0];
+      aTag.setAttribute("data_timestamp",props.bookmark_timestamp[1])
+      li.appendChild(aTag)
+
+      //ADD OTHER ATTRIBUTES
+      
+      ul.appendChild(li);
+
+
+      // RESET THE VALUE OF BOOKMARK_TIMESTAMP IN PARENT TO STOP RERENDERING
+      props.reset_bookmark_timestamp()
+    }
+    
+  })
+    
+  
+
   return (
-    <ul>
+    <ul id="bookmark_list">
       {response_data.map((element, index) => (
         <li key={index} onClick={send_timestamp}>
           <a href="#" data_timestamp={element.split(",")[1]}>
