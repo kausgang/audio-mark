@@ -1,9 +1,18 @@
 function Container(props) {
+
+  //LOAD SAMPLE AUDIO WHEN COMPONENT LOADS
+
+
   const [slider_value, setSlider_value] = React.useState(0);
   const [bookmark_timestam,setBookmark_timestamp]=React.useState([null,0])
+  const [sound,setSound]=React.useState(sample_sound)
+  const [filename,setFilename]=React.useState("")
 
+
+
+ 
   //   AUDIO FILENAME
-  let filename = props.filename;
+  // let filename = props.filename;
 
   //THIS IS FOR MANUAL SLIDER MOVEMENT
   function slider_handler(newValue) {
@@ -74,31 +83,61 @@ function Container(props) {
   function reset_bookmark_timestamp() {
     setBookmark_timestamp([null,0])
   }
+
+  function select_song(selected_song) {
+    
+  
+    
+
+
+    setSound(new Howl({
+      src: {selected_song},
+      html5: true,
+    }))
+
+    setFilename(selected_song.split("/").pop())
+  }
   return (
     <div>
-      {/* SEND THE SOUND VARIABLE TO IT'S CHILDREN */}
+      
+      <SelectAudio select_song={select_song} />
+      <PlayAudio sound={sound}/>
+      
+
+
+
+{/* 
       <ProgressBar
-        sound={props.sound}
+        sound={sound}
         slider_move={slider_handler}
         current_seek={slider_value}
       />
-      {/* SHOW THE SLIDER VALUE */}
+
       <p>{slider_value}</p>
       <PlaybackControl
         seek_progressbar={slider_handler}
         current_seek={slider_value}
-        sound={props.sound}
+        sound={sound}
       />
       <br></br>
       <BookmarkCreator
         timestamp={slider_value}
         save_bookmark={save_bookmark}
-        filename={props.filename}
+        filename={filename}
       />
-      <p>Refresh the page for newly added bookmark to showup.</p>
+      
       <br></br>
-      {/* <BookmarkList filename={props.filename} sound={props.sound} /> */}
-      <BookmarkList filename={props.filename} bookmark_timestamp={bookmark_timestam} reset_bookmark_timestamp={reset_bookmark_timestamp} bookmark_seek={bookmark_seek} />
+
+      <p>Bookmark drildown will only work when audio is paused</p>
+
+      <BookmarkList 
+        filename={filename} 
+        bookmark_timestamp={bookmark_timestam} 
+        reset_bookmark_timestamp={reset_bookmark_timestamp} 
+        bookmark_seek={bookmark_seek} 
+      /> */}
+
+      
     </div>
   );
 }
