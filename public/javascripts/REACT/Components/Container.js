@@ -1,9 +1,20 @@
 function Container(props) {
+  //LOAD SAMPLE AUDIO WHEN COMPONENT LOADS
+
   const [slider_value, setSlider_value] = React.useState(0);
-  const [bookmark_timestam,setBookmark_timestamp]=React.useState([null,0])
+  const [bookmark_timestam, setBookmark_timestamp] = React.useState([null, 0]);
+  const [sound, setSound] = React.useState(sample_sound);
+  const [filename, setFilename] = React.useState("");
+
+  const [isHidden, setIsHidden] = React.useState(true);
+
+  var style = {};
+  if (isHidden) {
+    style.display = "none";
+  }
 
   //   AUDIO FILENAME
-  let filename = props.filename;
+  // let filename = props.filename;
 
   //THIS IS FOR MANUAL SLIDER MOVEMENT
   function slider_handler(newValue) {
@@ -12,8 +23,7 @@ function Container(props) {
 
   function save_bookmark(bookmark_name, timestamp) {
     //API call to TO SAVE IT IN SERVER
-    if(bookmark_name!==null){
-
+    if (bookmark_name !== null) {
       fetch("/create_bookmark", {
         method: "POST",
         body: JSON.stringify({
@@ -27,15 +37,14 @@ function Container(props) {
       }).then((response) => {
         const status = response.status;
         console.log("status = ", status);
-  
+
         if (status !== 200) {
           alert("error occured writing to bookmark record");
         } else {
           // if(bookmark_name!==null)
-            alert("Bookmark created successfully");
-            
-          
-          setBookmark_timestamp([bookmark_name,timestamp])
+          alert("Bookmark created successfully");
+
+          setBookmark_timestamp([bookmark_name, timestamp]);
         }
       });
     }
@@ -58,8 +67,7 @@ function Container(props) {
     //   } else {
     //     // if(bookmark_name!==null)
     //       alert("Bookmark created successfully");
-          
-        
+
     //     setBookmark_timestamp([bookmark_name,timestamp])
     //   }
     // });
@@ -72,33 +80,61 @@ function Container(props) {
 
   // RESET BOOKMARK_TIMESTAMP TO STOP RERENDERING BOOKMARK_LIST
   function reset_bookmark_timestamp() {
-    setBookmark_timestamp([null,0])
+    setBookmark_timestamp([null, 0]);
   }
+
+  function select_song(selected_song) {
+    // CHANGE SOUND SOURCE
+    let new_sound = new Howl({
+      src: selected_song,
+      html5: true,
+    });
+    setSound(new_sound);
+
+    // setFilename(selected_song.split("/").pop());
+
+    // CHANGE DISPLAY OF PLAYAUDIO
+    setIsHidden(false);
+  }
+
   return (
     <div>
-      {/* SEND THE SOUND VARIABLE TO IT'S CHILDREN */}
+      <SelectAudio select_song={select_song} />
+
+      <div style={style}>
+        <PlayAudio sound={sound} />
+      </div>
+
+      {/* 
       <ProgressBar
-        sound={props.sound}
+        sound={sound}
         slider_move={slider_handler}
         current_seek={slider_value}
       />
-      {/* SHOW THE SLIDER VALUE */}
+
       <p>{slider_value}</p>
       <PlaybackControl
         seek_progressbar={slider_handler}
         current_seek={slider_value}
-        sound={props.sound}
+        sound={sound}
       />
       <br></br>
       <BookmarkCreator
         timestamp={slider_value}
         save_bookmark={save_bookmark}
-        filename={props.filename}
+        filename={filename}
       />
-      <p>Refresh the page for newly added bookmark to showup.</p>
+      
       <br></br>
-      {/* <BookmarkList filename={props.filename} sound={props.sound} /> */}
-      <BookmarkList filename={props.filename} bookmark_timestamp={bookmark_timestam} reset_bookmark_timestamp={reset_bookmark_timestamp} bookmark_seek={bookmark_seek} />
+
+      <p>Bookmark drildown will only work when audio is paused</p>
+
+      <BookmarkList 
+        filename={filename} 
+        bookmark_timestamp={bookmark_timestam} 
+        reset_bookmark_timestamp={reset_bookmark_timestamp} 
+        bookmark_seek={bookmark_seek} 
+      /> */}
     </div>
   );
 }
