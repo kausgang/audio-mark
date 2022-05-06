@@ -4,7 +4,7 @@ function BookmarkList(props) {
   // GET LIST OF BOOKMARK THROUGH API CALL
   let filename = props.filename;
 
-  console.log(filename)
+  
   let [response_data, setResponse_data] = React.useState([]);
 
   // React.useEffect(() => {

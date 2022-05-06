@@ -63,9 +63,11 @@ function PlayAudio(props) {
         current_seek={slider_value} 
       />
 
-      <br></br>
+      
       <p>{slider_value}</p>
 
+      <br></br>
+      
       <PlaybackControl
         seek_progressbar={slider_handler}
         current_seek={slider_value}
