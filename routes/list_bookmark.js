@@ -8,10 +8,10 @@ const fs=require('fs')
 router.get("/", function (req, res, next) {
   const filename = req.query.filename;
   const full_filename='./public/AUDIO/'+filename+".txt"
-  console.log("here"+filename);
+  
 
   //READ CSV FILE WITH FILENAME.txt AND CONVERT INTO JSON. LATER SEND WITH BELOW CODE
-  let bookmark_content;
+  // let bookmark_content;
  
   if(fs.existsSync(full_filename)){
     fs.readFile(full_filename, 'utf8', function (err, data) {
