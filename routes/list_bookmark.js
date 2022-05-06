@@ -8,7 +8,7 @@ const fs=require('fs')
 router.get("/", function (req, res, next) {
   const filename = req.query.filename;
   const full_filename='./public/AUDIO/'+filename+".txt"
-  console.log(filename);
+  console.log("here"+filename);
 
   //READ CSV FILE WITH FILENAME.txt AND CONVERT INTO JSON. LATER SEND WITH BELOW CODE
   let bookmark_content;

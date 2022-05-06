@@ -4,7 +4,7 @@ function Container(props) {
   const [slider_value, setSlider_value] = React.useState(0);
   const [bookmark_timestam, setBookmark_timestamp] = React.useState([null, 0]);
   const [sound, setSound] = React.useState(sample_sound);
-  const [filename, setFilename] = React.useState("");
+  const [filename, setFilename] = React.useState(props.filename);
 
   const [isHidden, setIsHidden] = React.useState(true);
 
@@ -17,9 +17,9 @@ function Container(props) {
   // let filename = props.filename;
 
   //THIS IS FOR MANUAL SLIDER MOVEMENT
-  function slider_handler(newValue) {
-    setSlider_value(newValue);
-  }
+  // function slider_handler(newValue) {
+  //   setSlider_value(newValue);
+  // }
 
   function save_bookmark(bookmark_name, timestamp) {
     //API call to TO SAVE IT IN SERVER
@@ -48,29 +48,7 @@ function Container(props) {
         }
       });
     }
-    // fetch("/create_bookmark", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     filename: filename,
-    //     bookmark_name: bookmark_name,
-    //     timestamp: timestamp,
-    //   }),
-    //   headers: {
-    //     "Content-type": "application/json; charset=UTF-8",
-    //   },
-    // }).then((response) => {
-    //   const status = response.status;
-    //   console.log("status = ", status);
 
-    //   if (status !== 200) {
-    //     alert("error occured writing to bookmark record");
-    //   } else {
-    //     // if(bookmark_name!==null)
-    //       alert("Bookmark created successfully");
-
-    //     setBookmark_timestamp([bookmark_name,timestamp])
-    //   }
-    // });
   }
 
   // SEEK PROGRESSBAR AND AUDIO IF BOOKMARK IS CLICK
@@ -91,7 +69,8 @@ function Container(props) {
     });
     setSound(new_sound);
 
-    // setFilename(selected_song.split("/").pop());
+    setFilename(selected_song.split("/").pop());
+    console.log(filename)
 
     // CHANGE DISPLAY OF PLAYAUDIO
     setIsHidden(false);
@@ -102,7 +81,7 @@ function Container(props) {
       <SelectAudio select_song={select_song} />
 
       <div style={style}>
-        <PlayAudio sound={sound} />
+        <PlayAudio sound={sound} filename={filename} />
       </div>
 
       {/* 
