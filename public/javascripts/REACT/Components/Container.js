@@ -30,11 +30,13 @@ function Container(props) {
   return (
     <div>
       <div style={style}>
-        <p>Refresh page to change song</p>
+        <p className="text-danger m-2">Refresh page to change song</p>
       </div>
 
-      <br></br>
-      <SelectAudio select_song={select_song} mp3_files={mp3_files} />
+      {/* <br></br> */}
+      <div className="m-3">
+        <SelectAudio select_song={select_song} mp3_files={mp3_files} />
+      </div>
 
       <div style={style}>
         <PlayAudio sound={sound} filename={filename} />

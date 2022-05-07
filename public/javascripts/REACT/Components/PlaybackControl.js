@@ -152,49 +152,61 @@ function PlaybackControl(props) {
   // );
 
   return (
-    <div className="d-flex justify-content-center">
-      <div class="btn-group" role="group" aria-label="Basic example">
+    <div>
+      <div className="btn-group" role="group" aria-label="Basic example">
         {/* back 60 sec */}
-        <button type="button" class="btn btn-secondary" onClick={back60sec}>
-          <span class="material-symbols-rounded">arrow_back</span>
+        <button type="button" className="btn btn-secondary" onClick={back60sec}>
+          <span className="material-symbols-rounded">arrow_back</span>
         </button>
         {/* back 10 sec */}
-        <button type="button" class="btn btn-secondary" onClick={back10sec}>
-          <span class="material-symbols-rounded">
+        <button type="button" className="btn btn-secondary" onClick={back10sec}>
+          <span className="material-symbols-rounded">
             keyboard_double_arrow_left
           </span>
         </button>
         {/* back 1 sec */}
-        <button type="button" class="btn btn-secondary" onClick={back1sec}>
-          <span class="material-symbols-rounded">keyboard_arrow_left</span>
+        <button type="button" className="btn btn-secondary" onClick={back1sec}>
+          <span className="material-symbols-rounded">keyboard_arrow_left</span>
         </button>
       </div>
 
-      <div class="btn-group  m-2" role="group" aria-label="Basic example">
+      <div className="btn-group" role="group" aria-label="Basic example">
         {/* play pause */}
         <button
           id="play_pause"
           className="paused btn btn-primary"
           onClick={play}
         >
-          <span class="material-symbols-rounded">play_pause</span>
+          <span className="material-symbols-rounded">play_pause</span>
         </button>
       </div>
 
-      <div class="btn-group" role="group" aria-label="Basic example">
+      <div className="btn-group" role="group" aria-label="Basic example">
         {/* forward 1 sec */}
-        <button type="button" class="btn btn-secondary" onClick={forward1sec}>
-          <span class="material-symbols-rounded">keyboard_arrow_right</span>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={forward1sec}
+        >
+          <span className="material-symbols-rounded">keyboard_arrow_right</span>
         </button>
         {/* forward 10 sec */}
-        <button type="button" class="btn btn-secondary" onClick={forward10sec}>
-          <span class="material-symbols-rounded">
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={forward10sec}
+        >
+          <span className="material-symbols-rounded">
             keyboard_double_arrow_right
           </span>
         </button>
         {/* forward 60 sec */}
-        <button type="button" class="btn btn-secondary" onClick={forward60sec}>
-          <span class="material-symbols-rounded">arrow_right_alt</span>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={forward60sec}
+        >
+          <span className="material-symbols-rounded">arrow_right_alt</span>
         </button>
       </div>
     </div>

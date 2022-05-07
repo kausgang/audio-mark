@@ -63,19 +63,24 @@ function PlayAudio(props) {
 
       {/* <br></br> */}
 
-      <PlaybackControl
-        seek_progressbar={slider_handler}
-        current_seek={slider_value}
-        sound={sound}
-      />
+      <div className="d-flex justify-content-center">
+        <div className="me-3">
+          <BookmarkCreator
+            timestamp={slider_value}
+            save_bookmark={save_bookmark}
+            filename={filename}
+          />
+        </div>
 
-      <br></br>
-      <BookmarkCreator
-        timestamp={slider_value}
-        save_bookmark={save_bookmark}
-        filename={filename}
-      />
-
+        <div ClassName="m-1">
+          <PlaybackControl
+            seek_progressbar={slider_handler}
+            current_seek={slider_value}
+            sound={sound}
+          />
+        </div>
+        {/* <br></br> */}
+      </div>
       <BookmarkList
         filename={filename}
         bookmark_timestamp={bookmark_timestam}

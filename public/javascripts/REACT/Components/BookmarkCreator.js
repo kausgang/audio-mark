@@ -7,7 +7,9 @@ function BookmarkCreator(props) {
   };
   return (
     <div>
-      <button onClick={create_bookmark}>Create Bookmark</button>
+      <button className="btn btn-info btn-lg" onClick={create_bookmark}>
+        Create Bookmark
+      </button>
     </div>
   );
 }
