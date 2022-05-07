@@ -45,6 +45,7 @@ function BookmarkList(props) {
           // console.log(element.split(','))
           if (element.split(",")[0] !== null) {
             let li = document.createElement("li");
+            li.setAttribute("class", "list-group-item");
             li.addEventListener("click", send_timestamp);
             var aTag = document.createElement("a");
             aTag.setAttribute("href", "#");
@@ -80,7 +81,7 @@ function BookmarkList(props) {
   return (
     <div className="m-2">
       <p>Bookmark drilldown will only work when audio is paused</p>
-      <ul id="bookmark_list">
+      <ul id="bookmark_list" className="list-group list-group-flush">
         {/* {response_data.map((element, index) => (
         <li key={index} onClick={send_timestamp}>
           <a href="#" data_timestamp={element.split(",")[1]}>
