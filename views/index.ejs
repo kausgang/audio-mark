@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <!-- <link rel="stylesheet" href="/stylesheets/style.css" /> -->
 
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
@@ -27,15 +27,21 @@
     <!-- load papa parse to parse bookmark csv -->
     <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js'></script> -->
 
-
     <!-- Load Bable -->
     <!-- order is important...BABEL should come at last -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   </head>
   <body>
     <div id="root"></div>
+
+    <script>
+      let mp3_files_string = "<%= filenames %>";
+      let mp3_files = mp3_files_string.split(",");
+      console.log(mp3_files);
+      // INPUT AUDIO FILES ARE STORED IN mp3_files VARIABLE
+    </script>
     <script type="text/babel">
-      const { Slider,Select,FormControl,InputLabel,MenuItem } = MaterialUI;
+      const { Slider, Select, FormControl, InputLabel, MenuItem } = MaterialUI;
     </script>
     <!-- APP component -->
     <script
