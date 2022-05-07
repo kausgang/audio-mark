@@ -35,14 +35,16 @@ function PlaybackControl(props) {
       .getElementById("play_pause")
       .getAttribute("class");
 
-    if (button_class === "playing") {
+    if (button_class === "playing btn btn-primary") {
       //now i can only pause it
       // CLEAR INTERVAL
       // clearInterval(intervalID)
       // PAUSE THE MUSIC
       sound.pause();
       //CHANGE CLASSNAME
-      document.getElementById("play_pause").setAttribute("class", "paused");
+      document
+        .getElementById("play_pause")
+        .setAttribute("class", "paused btn btn-primary");
     } else {
       // GET CURRENT SEEK TIME FROM PARENT
       setTimestamp(props.current_seek);
@@ -52,7 +54,9 @@ function PlaybackControl(props) {
       // PLAY MUSIC
       sound.play();
       //CHANGE CLASSNAME TO RERENDER COMPONENT
-      document.getElementById("play_pause").setAttribute("class", "playing");
+      document
+        .getElementById("play_pause")
+        .setAttribute("class", "playing btn btn-primary");
     }
 
     // CHANGE BUTTON TEXT
@@ -119,24 +123,80 @@ function PlaybackControl(props) {
     props.seek_progressbar(timestamp + 60);
   };
 
+  // return (
+  //   <div>
+  //     {/* <br></br> */}
+  //     {/* <p>{timestamp}</p> */}
+  //     {/* <br></br> */}
+
+  //     <button onClick={back60sec}>Back 1min</button>
+  //     <button onClick={back10sec}>Back 10sec</button>
+  //     <button onClick={back1sec}>Back 1sec</button>
+
+  //     {/* <button id="play_pause" className="paused" onClick={play}>
+  //       Click to {playing ? "Pause" : "Play"}
+  //     </button>
+  //      */}
+
+  //     <button id="play_pause" className="paused" onClick={play}>
+  //       <span class="material-symbols-rounded">play_pause</span>
+  //       {/* Click to {playing ? "Pause" : "Play"} */}
+  //     </button>
+
+  //     {/* <button onClick={pause}>Click to pause</button> */}
+  //     {/* <button onClick={stop}>Click to stop</button> */}
+  //     <button onClick={forward1sec}>Forward 1sec</button>
+  //     <button onClick={forward10sec}>Forward 10sec</button>
+  //     <button onClick={forward60sec}>Forward 1min</button>
+  //   </div>
+  // );
+
   return (
-    <div>
-      {/* <br></br> */}
-      {/* <p>{timestamp}</p> */}
-      {/* <br></br> */}
+    <div className="d-flex justify-content-center">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        {/* back 60 sec */}
+        <button type="button" class="btn btn-secondary" onClick={back60sec}>
+          <span class="material-symbols-rounded">arrow_back</span>
+        </button>
+        {/* back 10 sec */}
+        <button type="button" class="btn btn-secondary" onClick={back10sec}>
+          <span class="material-symbols-rounded">
+            keyboard_double_arrow_left
+          </span>
+        </button>
+        {/* back 1 sec */}
+        <button type="button" class="btn btn-secondary" onClick={back1sec}>
+          <span class="material-symbols-rounded">keyboard_arrow_left</span>
+        </button>
+      </div>
 
-      <button onClick={back60sec}>Back 1min</button>
-      <button onClick={back10sec}>Back 10sec</button>
-      <button onClick={back1sec}>Back 1sec</button>
+      <div class="btn-group  m-2" role="group" aria-label="Basic example">
+        {/* play pause */}
+        <button
+          id="play_pause"
+          className="paused btn btn-primary"
+          onClick={play}
+        >
+          <span class="material-symbols-rounded">play_pause</span>
+        </button>
+      </div>
 
-      <button id="play_pause" className="paused" onClick={play}>
-        Click to {playing ? "Pause" : "Play"}
-      </button>
-      {/* <button onClick={pause}>Click to pause</button> */}
-      {/* <button onClick={stop}>Click to stop</button> */}
-      <button onClick={forward1sec}>Forward 1sec</button>
-      <button onClick={forward10sec}>Forward 10sec</button>
-      <button onClick={forward60sec}>Forward 1min</button>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        {/* forward 1 sec */}
+        <button type="button" class="btn btn-secondary" onClick={forward1sec}>
+          <span class="material-symbols-rounded">keyboard_arrow_right</span>
+        </button>
+        {/* forward 10 sec */}
+        <button type="button" class="btn btn-secondary" onClick={forward10sec}>
+          <span class="material-symbols-rounded">
+            keyboard_double_arrow_right
+          </span>
+        </button>
+        {/* forward 60 sec */}
+        <button type="button" class="btn btn-secondary" onClick={forward60sec}>
+          <span class="material-symbols-rounded">arrow_right_alt</span>
+        </button>
+      </div>
     </div>
   );
 }
