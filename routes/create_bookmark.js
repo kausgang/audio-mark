@@ -11,6 +11,8 @@ router.post("/", function (req, res, next) {
   // ENTER ADDING BOOKMARK LOGIC HERE (FS OPERATIONS)
 
   if (fs.existsSync("./public/AUDIO/" + filename + ".txt")) {
+
+    console.log("if loop")
     fs.appendFile(
       "./public/AUDIO/" + filename + ".txt",
       bookmark_name + "," + timestamp + "\n",
@@ -21,6 +23,8 @@ router.post("/", function (req, res, next) {
       }
     );
   } else {
+
+    console.log("else loop")
     fs.writeFileSync(
       "./public/AUDIO/" + filename + ".txt",
       bookmark_name + "," + timestamp + "\n"

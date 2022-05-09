@@ -8,6 +8,14 @@ function SelectAudio(props) {
     setAudio(selected_song);
 
     setIsDisabled(true);
+
+    // CREATE A DUMMY BOOKMARK FILE WHEN THE SUDIO IS SELECTED
+    // URL = "/list_bookmark?filename=" + filename;
+    // fetch(URL)
+    // .then((response) => response.json())
+    // .
+
+
     props.select_song(selected_song);
   }
 

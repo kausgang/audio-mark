@@ -123,6 +123,19 @@ function PlaybackControl(props) {
     props.seek_progressbar(timestamp + 60);
   };
 
+  const _1x_speed = ()=>{
+    sound.rate(1)
+  }
+  const _1_5x_speed = ()=>{
+    sound.rate(1.5)
+  }
+  const _1_75x_speed = ()=>{
+    sound.rate(1.75)
+  }
+  // 2X speed
+  const _2x_speed = ()=>{
+    sound.rate(2)
+  }
   // return (
   //   <div>
   //     {/* <br></br> */}
@@ -209,6 +222,36 @@ function PlaybackControl(props) {
           <span className="material-symbols-rounded">arrow_right_alt</span>
         </button>
       </div>
+
+      <div className="btn-group" role="group" aria-label="Basic example">
+        {/* speed control */}
+        <button
+          id="play_pause"
+          className="paused btn btn-warning"
+          onClick={_1x_speed}
+        > 1x
+          </button>
+        <button
+          id="play_pause"
+          className="paused btn btn-warning"
+          onClick={_1_5x_speed}
+        > 1.5x
+          </button>
+        <button
+          id="play_pause"
+          className="paused btn btn-warning"
+          onClick={_1_75x_speed}
+        > 1.75x
+          </button>
+        <button
+          id="play_pause"
+          className="paused btn btn-warning"
+          onClick={_2x_speed}
+        > 2x
+          </button>
+      </div>
+
+
     </div>
   );
 }

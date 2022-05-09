@@ -56,7 +56,10 @@ function BookmarkList(props) {
             ul.appendChild(li);
           }
         });
-      });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });;
 
     // if(props.bookmark_timestamp[0]!=null){
     //   let ul=document.getElementById('bookmark_list');
