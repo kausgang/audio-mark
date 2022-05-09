@@ -83,7 +83,12 @@ function BookmarkList(props) {
 
   return (
     <div className="m-2">
-      <p>Bookmark drilldown will only work when audio is paused</p>
+
+      <div className="d-flex justify-content-between">
+        <p class="text-info text-decoration-underline" >To Update bookmark names, edit ./public/"filename".txt </p>
+        <p class="text-info text-decoration-underline">Bookmark drilldown will only work when audio is paused.</p>
+      </div>
+   
       <ul id="bookmark_list" className="list-group list-group-flush">
         {/* {response_data.map((element, index) => (
         <li key={index} onClick={send_timestamp}>

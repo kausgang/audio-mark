@@ -32,7 +32,7 @@ function PlayAudio(props) {
           alert("error occured writing to bookmark record");
         } else {
           // if(bookmark_name!==null)
-          alert("Bookmark created successfully");
+          // alert("Bookmark created successfully");
 
           setBookmark_timestamp([bookmark_name, timestamp]);
         }

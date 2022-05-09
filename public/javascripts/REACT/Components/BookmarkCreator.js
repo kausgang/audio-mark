@@ -1,7 +1,8 @@
 function BookmarkCreator(props) {
   const create_bookmark = () => {
     // console.log(props.timestamp);
-    let name = prompt("What's the name for the Bookmark");
+    // let name = prompt("What's the name for the Bookmark");
+    let name = props.timestamp + " -  Seconds"
     props.save_bookmark(name, props.timestamp);
     // alert("Bookmark added")
   };

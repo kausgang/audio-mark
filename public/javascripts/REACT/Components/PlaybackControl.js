@@ -10,9 +10,15 @@ function PlaybackControl(props) {
 
     if (playing) {
       setTimeout(() => {
-        props.seek_progressbar(Math.round(sound.seek()));
+        // props.seek_progressbar(Math.round(sound.seek()));
+        props.seek_progressbar(sound.seek());
       }, 1000);
     }
+
+
+    // if (playing) {
+    //   props.seek_progressbar(Math.round(sound.seek()));
+    // }
 
     // // BOOKARK SEEK HAS BEEN CLICKED
     // if (props.audio_value !== null) {
@@ -53,6 +59,8 @@ function PlaybackControl(props) {
 
       // PLAY MUSIC
       sound.play();
+
+      
       //CHANGE CLASSNAME TO RERENDER COMPONENT
       document
         .getElementById("play_pause")
