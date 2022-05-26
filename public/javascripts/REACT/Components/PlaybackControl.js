@@ -15,7 +15,6 @@ function PlaybackControl(props) {
       }, 1000);
     }
 
-
     // if (playing) {
     //   props.seek_progressbar(Math.round(sound.seek()));
     // }
@@ -60,7 +59,6 @@ function PlaybackControl(props) {
       // PLAY MUSIC
       sound.play();
 
-      
       //CHANGE CLASSNAME TO RERENDER COMPONENT
       document
         .getElementById("play_pause")
@@ -131,19 +129,22 @@ function PlaybackControl(props) {
     props.seek_progressbar(timestamp + 60);
   };
 
-  const _1x_speed = ()=>{
-    sound.rate(1)
-  }
-  const _1_5x_speed = ()=>{
-    sound.rate(1.5)
-  }
-  const _1_75x_speed = ()=>{
-    sound.rate(1.75)
-  }
+  const _1x_speed = () => {
+    sound.rate(1);
+  };
+  const _1_25x_speed = () => {
+    sound.rate(1.25);
+  };
+  const _1_5x_speed = () => {
+    sound.rate(1.5);
+  };
+  const _1_75x_speed = () => {
+    sound.rate(1.75);
+  };
   // 2X speed
-  const _2x_speed = ()=>{
-    sound.rate(2)
-  }
+  const _2x_speed = () => {
+    sound.rate(2);
+  };
   // return (
   //   <div>
   //     {/* <br></br> */}
@@ -237,29 +238,43 @@ function PlaybackControl(props) {
           id="play_pause"
           className="paused btn btn-warning"
           onClick={_1x_speed}
-        > 1x
-          </button>
+        >
+          {" "}
+          1x
+        </button>
+        <button
+          id="play_pause"
+          className="paused btn btn-warning"
+          onClick={_1_25x_speed}
+        >
+          {" "}
+          1.25x
+        </button>
         <button
           id="play_pause"
           className="paused btn btn-warning"
           onClick={_1_5x_speed}
-        > 1.5x
-          </button>
+        >
+          {" "}
+          1.5x
+        </button>
         <button
           id="play_pause"
           className="paused btn btn-warning"
           onClick={_1_75x_speed}
-        > 1.75x
-          </button>
+        >
+          {" "}
+          1.75x
+        </button>
         <button
           id="play_pause"
           className="paused btn btn-warning"
           onClick={_2x_speed}
-        > 2x
-          </button>
+        >
+          {" "}
+          2x
+        </button>
       </div>
-
-
     </div>
   );
 }

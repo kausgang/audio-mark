@@ -40,7 +40,7 @@ function PlayAudio(props) {
     }
   }
 
-  // SEEK PROGRESSBAR AND AUDIO IF BOOKMARK IS CLICK
+  // SEEK PROGRESSBAR AND AUDIO IF BOOKMARK IS CLICKED
   function bookmark_seek(timestamp) {
     setSlider_value(parseInt(timestamp));
   }
