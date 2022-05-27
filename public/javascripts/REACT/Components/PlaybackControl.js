@@ -239,7 +239,7 @@ function PlaybackControl(props) {
           className="paused btn btn-warning"
           onClick={_1x_speed}
         >
-          {" "}
+          {/* {" "} */}
           1x
         </button>
         <button
