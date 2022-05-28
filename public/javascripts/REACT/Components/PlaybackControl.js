@@ -46,6 +46,10 @@ function PlaybackControl(props) {
       // clearInterval(intervalID)
       // PAUSE THE MUSIC
       sound.pause();
+
+      // Change Icon
+      document.getElementById("play_icon").innerHTML = "play_arrow";
+
       //CHANGE CLASSNAME
       document
         .getElementById("play_pause")
@@ -58,6 +62,9 @@ function PlaybackControl(props) {
 
       // PLAY MUSIC
       sound.play();
+
+      // Change Icon
+      document.getElementById("play_icon").innerHTML = "pause";
 
       //CHANGE CLASSNAME TO RERENDER COMPONENT
       document
@@ -195,10 +202,12 @@ function PlaybackControl(props) {
       <div className="btn-group" role="group" aria-label="Basic example">
         <button
           id="play_pause"
-          className="paused btn btn-primary btn-lg"
+          className="paused btn btn-primary"
           onClick={play}
         >
-          <span className="material-symbols-rounded">play_pause</span>
+          <span id="play_icon" className="material-symbols-rounded">
+            play_arrow
+          </span>
         </button>
       </div>
 
