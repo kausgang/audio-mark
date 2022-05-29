@@ -40,7 +40,7 @@ function PlaybackControl(props) {
       .getElementById("play_pause")
       .getAttribute("class");
 
-    if (button_class === "playing btn btn-primary") {
+    if (button_class === "playing btn btn-primary btn-lg mr-3") {
       //now i can only pause it
       // CLEAR INTERVAL
       // clearInterval(intervalID)
@@ -48,12 +48,12 @@ function PlaybackControl(props) {
       sound.pause();
 
       // Change Icon
-      document.getElementById("play_icon").innerHTML = "play_arrow";
+      document.getElementById("play_icon").innerHTML = "play_circle";
 
       //CHANGE CLASSNAME
       document
         .getElementById("play_pause")
-        .setAttribute("class", "paused btn btn-primary");
+        .setAttribute("class", "paused btn btn-primary btn-lg mr-3");
     } else {
       // GET CURRENT SEEK TIME FROM PARENT
       setTimestamp(props.current_seek);
@@ -69,7 +69,7 @@ function PlaybackControl(props) {
       //CHANGE CLASSNAME TO RERENDER COMPONENT
       document
         .getElementById("play_pause")
-        .setAttribute("class", "playing btn btn-primary");
+        .setAttribute("class", "playing btn btn-primary btn-lg mr-3");
     }
 
     // CHANGE BUTTON TEXT
@@ -152,36 +152,19 @@ function PlaybackControl(props) {
   const _2x_speed = () => {
     sound.rate(2);
   };
-  // return (
-  //   <div>
-  //     {/* <br></br> */}
-  //     {/* <p>{timestamp}</p> */}
-  //     {/* <br></br> */}
-
-  //     <button onClick={back60sec}>Back 1min</button>
-  //     <button onClick={back10sec}>Back 10sec</button>
-  //     <button onClick={back1sec}>Back 1sec</button>
-
-  //     {/* <button id="play_pause" className="paused" onClick={play}>
-  //       Click to {playing ? "Pause" : "Play"}
-  //     </button>
-  //      */}
-
-  //     <button id="play_pause" className="paused" onClick={play}>
-  //       <span class="material-symbols-rounded">play_pause</span>
-  //       {/* Click to {playing ? "Pause" : "Play"} */}
-  //     </button>
-
-  //     {/* <button onClick={pause}>Click to pause</button> */}
-  //     {/* <button onClick={stop}>Click to stop</button> */}
-  //     <button onClick={forward1sec}>Forward 1sec</button>
-  //     <button onClick={forward10sec}>Forward 10sec</button>
-  //     <button onClick={forward60sec}>Forward 1min</button>
-  //   </div>
-  // );
 
   return (
     <div>
+      <button
+        id="play_pause"
+        className="paused btn btn-primary btn-lg mr-3"
+        onClick={play}
+      >
+        <span id="play_icon" className="material-symbols-rounded">
+          play_circle
+        </span>
+        {"  "} Play/Pause
+      </button>{" "}
       <div className="btn-group" role="group" aria-label="Basic example">
         {/* back 60 sec */}
         <button type="button" className="btn btn-secondary" onClick={back60sec}>
@@ -197,20 +180,7 @@ function PlaybackControl(props) {
         <button type="button" className="btn btn-secondary" onClick={back1sec}>
           <span className="material-symbols-rounded">keyboard_arrow_left</span>
         </button>
-      </div>
-
-      <div className="btn-group" role="group" aria-label="Basic example">
-        <button
-          id="play_pause"
-          className="paused btn btn-primary"
-          onClick={play}
-        >
-          <span id="play_icon" className="material-symbols-rounded">
-            play_arrow
-          </span>
-        </button>
-      </div>
-
+      </div>{" "}
       <div className="btn-group" role="group" aria-label="Basic example">
         {/* forward 1 sec */}
         <button
@@ -238,8 +208,7 @@ function PlaybackControl(props) {
         >
           <span className="material-symbols-rounded">arrow_right_alt</span>
         </button>
-      </div>
-
+      </div>{" "}
       <div className="btn-group" role="group" aria-label="Basic example">
         {/* speed control */}
         <button
