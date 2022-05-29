@@ -137,19 +137,119 @@ function PlaybackControl(props) {
   };
 
   const _1x_speed = () => {
+    document
+      .getElementById("_1x_speed")
+      .setAttribute("class", "btn btn-warning active");
+
+    document
+      .getElementById("_1_25x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_5x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_75x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_2x_speed")
+      .setAttribute("class", "btn btn-warning");
+
     sound.rate(1);
   };
   const _1_25x_speed = () => {
+    document
+      .getElementById("_1x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_25x_speed")
+      .setAttribute("class", "btn btn-warning active");
+
+    document
+      .getElementById("_1_5x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_75x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_2x_speed")
+      .setAttribute("class", "btn btn-warning");
+
     sound.rate(1.25);
   };
   const _1_5x_speed = () => {
+    document
+      .getElementById("_1x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_25x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_5x_speed")
+      .setAttribute("class", "btn btn-warning active");
+
+    document
+      .getElementById("_1_75x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_2x_speed")
+      .setAttribute("class", "btn btn-warning");
+
     sound.rate(1.5);
   };
   const _1_75x_speed = () => {
+    document
+      .getElementById("_1x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_25x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_5x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_75x_speed")
+      .setAttribute("class", "btn btn-warning active");
+
+    document
+      .getElementById("_2x_speed")
+      .setAttribute("class", "btn btn-warning");
+
     sound.rate(1.75);
   };
   // 2X speed
   const _2x_speed = () => {
+    document
+      .getElementById("_1x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_25x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_5x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_1_75x_speed")
+      .setAttribute("class", "btn btn-warning");
+
+    document
+      .getElementById("_2x_speed")
+      .setAttribute("class", "btn btn-warning active");
+
     sound.rate(2);
   };
 
@@ -170,7 +270,7 @@ function PlaybackControl(props) {
         <button type="button" className="btn btn-secondary" onClick={back1sec}>
           <span className="material-symbols-rounded">keyboard_arrow_left</span>
         </button>
-      </div>{" "}
+      </div>
       <div className="btn-group" role="group" aria-label="Basic example">
         {/* forward 1 sec */}
         <button
@@ -202,42 +302,39 @@ function PlaybackControl(props) {
       <div className="btn-group" role="group" aria-label="Basic example">
         {/* speed control */}
         <button
-          // id="play_pause"
-          className="paused btn btn-warning"
+          id="_1x_speed"
+          // className="paused btn btn-warning"
+          className="btn btn-warning active"
           onClick={_1x_speed}
         >
           {/* {" "} */}
           1x
         </button>
         <button
-          // id="play_pause"
-          className="paused btn btn-warning"
+          id="_1_25x_speed"
+          className="btn btn-warning"
           onClick={_1_25x_speed}
         >
           {" "}
           1.25x
         </button>
         <button
-          // id="play_pause"
-          className="paused btn btn-warning"
+          id="_1_5x_speed"
+          className="btn btn-warning"
           onClick={_1_5x_speed}
         >
           {" "}
           1.5x
         </button>
         <button
-          // id="play_pause"
-          className="paused btn btn-warning"
+          id="_1_75x_speed"
+          className="btn btn-warning"
           onClick={_1_75x_speed}
         >
           {" "}
           1.75x
         </button>
-        <button
-          // id="play_pause"
-          className="paused btn btn-warning"
-          onClick={_2x_speed}
-        >
+        <button id="_2x_speed" className="btn btn-warning" onClick={_2x_speed}>
           {" "}
           2x
         </button>
