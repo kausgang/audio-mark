@@ -155,16 +155,6 @@ function PlaybackControl(props) {
 
   return (
     <div>
-      <button
-        id="play_pause"
-        className="paused btn btn-primary btn-lg mr-3"
-        onClick={play}
-      >
-        <span id="play_icon" className="material-symbols-rounded">
-          play_circle
-        </span>
-        {"  "} Play/Pause
-      </button>{" "}
       <div className="btn-group" role="group" aria-label="Basic example">
         {/* back 60 sec */}
         <button type="button" className="btn btn-secondary" onClick={back60sec}>
@@ -212,7 +202,7 @@ function PlaybackControl(props) {
       <div className="btn-group" role="group" aria-label="Basic example">
         {/* speed control */}
         <button
-          id="play_pause"
+          // id="play_pause"
           className="paused btn btn-warning"
           onClick={_1x_speed}
         >
@@ -220,7 +210,7 @@ function PlaybackControl(props) {
           1x
         </button>
         <button
-          id="play_pause"
+          // id="play_pause"
           className="paused btn btn-warning"
           onClick={_1_25x_speed}
         >
@@ -228,7 +218,7 @@ function PlaybackControl(props) {
           1.25x
         </button>
         <button
-          id="play_pause"
+          // id="play_pause"
           className="paused btn btn-warning"
           onClick={_1_5x_speed}
         >
@@ -236,7 +226,7 @@ function PlaybackControl(props) {
           1.5x
         </button>
         <button
-          id="play_pause"
+          // id="play_pause"
           className="paused btn btn-warning"
           onClick={_1_75x_speed}
         >
@@ -244,14 +234,24 @@ function PlaybackControl(props) {
           1.75x
         </button>
         <button
-          id="play_pause"
+          // id="play_pause"
           className="paused btn btn-warning"
           onClick={_2x_speed}
         >
           {" "}
           2x
         </button>
-      </div>
+      </div>{" "}
+      <button
+        id="play_pause"
+        className="paused btn btn-primary btn-lg mr-3"
+        onClick={play}
+      >
+        <span id="play_icon" className="material-symbols-rounded">
+          play_circle
+        </span>
+        {"  "} Play/Pause
+      </button>
     </div>
   );
 }
