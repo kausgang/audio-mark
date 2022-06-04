@@ -255,51 +255,7 @@ function PlaybackControl(props) {
 
   return (
     <div>
-      <div className="btn-group" role="group" aria-label="Basic example">
-        {/* back 60 sec */}
-        <button type="button" className="btn btn-secondary" onClick={back60sec}>
-          <span className="material-symbols-rounded">arrow_back</span>
-        </button>
-        {/* back 10 sec */}
-        <button type="button" className="btn btn-secondary" onClick={back10sec}>
-          <span className="material-symbols-rounded">
-            keyboard_double_arrow_left
-          </span>
-        </button>
-        {/* back 1 sec */}
-        <button type="button" className="btn btn-secondary" onClick={back1sec}>
-          <span className="material-symbols-rounded">keyboard_arrow_left</span>
-        </button>
-      </div>
-      <div className="btn-group" role="group" aria-label="Basic example">
-        {/* forward 1 sec */}
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={forward1sec}
-        >
-          <span className="material-symbols-rounded">keyboard_arrow_right</span>
-        </button>
-        {/* forward 10 sec */}
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={forward10sec}
-        >
-          <span className="material-symbols-rounded">
-            keyboard_double_arrow_right
-          </span>
-        </button>
-        {/* forward 60 sec */}
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={forward60sec}
-        >
-          <span className="material-symbols-rounded">arrow_right_alt</span>
-        </button>
-      </div>{" "}
-      <div className="btn-group" role="group" aria-label="Basic example">
+      <div className="btn-group" role="group" aria-label="Speed Control">
         {/* speed control */}
         <button
           id="_1x_speed"
@@ -337,6 +293,50 @@ function PlaybackControl(props) {
         <button id="_2x_speed" className="btn btn-warning" onClick={_2x_speed}>
           {" "}
           2x
+        </button>
+      </div>{" "}
+      <div className="btn-group" role="group" aria-label="Track Seek Left">
+        {/* back 60 sec */}
+        <button type="button" className="btn btn-secondary" onClick={back60sec}>
+          <span className="material-symbols-rounded">arrow_back</span>
+        </button>
+        {/* back 10 sec */}
+        <button type="button" className="btn btn-secondary" onClick={back10sec}>
+          <span className="material-symbols-rounded">
+            keyboard_double_arrow_left
+          </span>
+        </button>
+        {/* back 1 sec */}
+        <button type="button" className="btn btn-secondary" onClick={back1sec}>
+          <span className="material-symbols-rounded">keyboard_arrow_left</span>
+        </button>
+      </div>
+      <div className="btn-group" role="group" aria-label="Track Seek Right">
+        {/* forward 1 sec */}
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={forward1sec}
+        >
+          <span className="material-symbols-rounded">keyboard_arrow_right</span>
+        </button>
+        {/* forward 10 sec */}
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={forward10sec}
+        >
+          <span className="material-symbols-rounded">
+            keyboard_double_arrow_right
+          </span>
+        </button>
+        {/* forward 60 sec */}
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={forward60sec}
+        >
+          <span className="material-symbols-rounded">arrow_right_alt</span>
         </button>
       </div>{" "}
       <button
