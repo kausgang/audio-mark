@@ -50,6 +50,14 @@ function PlayAudio(props) {
     setBookmark_timestamp([null, 0]);
   }
 
+  const songinfo = () => {
+    // alert(sound.duration());
+    let SECONDS = sound.duration();
+    // Show duration in hh:mm:ss
+    var result = new Date(SECONDS * 1000).toISOString().substring(11, 19);
+    alert("Track Duration - " + result + "\nor " + SECONDS + " Seconds");
+  };
+
   return (
     <div>
       <br></br>
@@ -62,7 +70,13 @@ function PlayAudio(props) {
       <p>{slider_value} Seconds</p>
       {/* <p>{slider_value > 60 ? slider_value / 60 : slider_value} minutes</p> */}
 
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between m-2">
+        <div>
+          <button className="btn btn-lg btn-info" onClick={songinfo}>
+            Track Info
+          </button>
+        </div>
+
         <div>
           <PlaybackControl
             seek_progressbar={slider_handler}
@@ -78,8 +92,6 @@ function PlayAudio(props) {
             filename={filename}
           />
         </div>
-
-        {/* <br></br> */}
       </div>
       <BookmarkList
         filename={filename}
