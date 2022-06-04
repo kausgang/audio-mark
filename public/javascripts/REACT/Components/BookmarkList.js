@@ -57,9 +57,9 @@ function BookmarkList(props) {
           }
         });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
-      });;
+      });
 
     // if(props.bookmark_timestamp[0]!=null){
     //   let ul=document.getElementById('bookmark_list');
@@ -83,12 +83,15 @@ function BookmarkList(props) {
 
   return (
     <div className="m-2">
-
       <div className="d-flex justify-content-between">
-        <p class="text-info text-decoration-underline" >To Update bookmark names, edit ./public/"filename".txt </p>
-        <p class="text-info text-decoration-underline">Bookmark drilldown will only work when audio is paused.</p>
+        <p class="text-danger text-decoration-underline">
+          To Update bookmark names, edit - <b> ./public/"filename".txt</b>
+        </p>
+        <p class="text-info text-decoration-underline">
+          Bookmark drilldown will only work when audio is paused.
+        </p>
       </div>
-   
+
       <ul id="bookmark_list" className="list-group list-group-flush">
         {/* {response_data.map((element, index) => (
         <li key={index} onClick={send_timestamp}>
