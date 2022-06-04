@@ -60,8 +60,7 @@ function PlayAudio(props) {
       />
 
       <p>{slider_value} Seconds</p>
-
-      {/* <br></br> */}
+      {/* <p>{slider_value > 60 ? slider_value / 60 : slider_value} minutes</p> */}
 
       <div className="d-flex justify-content-between">
         <div>
