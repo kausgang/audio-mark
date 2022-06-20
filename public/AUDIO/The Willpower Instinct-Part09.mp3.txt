@@ -1,1 +1,3 @@
 Start,0
+Chapter Summary,3308.252888
+Chapter 10 - Final Thoughts,3402.487368
