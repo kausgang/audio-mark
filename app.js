@@ -12,6 +12,12 @@ var create_bookmark_Router = require("./routes/create_bookmark");
 // LIST BOOKMARK ROUTER
 var list_bookmark_Router = require("./routes/list_bookmark");
 
+// UPDATE BOOKMARK
+var update_bookmark_Router = require("./routes/update_bookmark");
+
+// DELETE BOOKMARK
+var delete_bookmark_Router = require("./routes/delete_bookmark");
+
 var app = express();
 
 // view engine setup
@@ -28,6 +34,8 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/create_bookmark", create_bookmark_Router);
 app.use("/list_bookmark", list_bookmark_Router);
+app.use("/update_bookmark", update_bookmark_Router);
+app.use("/delete_bookmark", delete_bookmark_Router);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -21,6 +21,43 @@ function BookmarkList(props) {
   // When using useEffect with a second array argument, React will run the callback after mounting (initial render)
   //  and after values in the array have changed. Since we pass an empty array, it will run only after mounting
 
+  const edit_bookmark = (e) => {
+    // capture the name user wants to give to the bookmark
+    let new_bookmark_name = prompt("Bookmark Name ?");
+
+    let old_bookmark_name =
+      e.target.parentNode.attributes.data_oldBookmarkName.value;
+
+    // update bookmark name
+    fetch("/update_bookmark", {
+      method: "POST",
+      body: JSON.stringify({
+        filename: filename,
+        old_bookmark_name,
+        new_bookmark_name,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((response) => {
+      const status = response.status;
+      console.log("status = ", status);
+
+      // if (status !== 200) {
+      //   alert("error occured writing to bookmark record");
+      // } else {
+      //   // if(bookmark_name!==null)
+      //   // alert("Bookmark created successfully");
+
+      //   setBookmark_timestamp([bookmark_name, timestamp]);
+      // }
+    });
+
+    alert("Bookmark name has been updated. Continue.");
+  };
+
+  const delete_bookmark = (e) => {};
+
   function send_timestamp(e) {
     let timestamp_value = e.target.attributes.data_timestamp.value;
     props.bookmark_seek(timestamp_value);
@@ -45,14 +82,49 @@ function BookmarkList(props) {
           // console.log(element.split(','))
           if (element.split(",")[0] !== null) {
             let li = document.createElement("li");
-            li.setAttribute("class", "list-group-item");
-            li.addEventListener("click", send_timestamp);
+            li.setAttribute(
+              "class",
+              "list-group-item d-flex justify-content-between"
+            );
+            // li.addEventListener("click", send_timestamp);
             var aTag = document.createElement("a");
             aTag.setAttribute("href", "#");
             aTag.innerText = element.split(",")[0];
             aTag.setAttribute("data_timestamp", element.split(",")[1]);
+            aTag.addEventListener("click", send_timestamp);
             li.appendChild(aTag);
 
+            // create a div to hold the edit/delete buttons
+            let update_holder_div = document.createElement("div");
+
+            var edit_button = document.createElement("a");
+            edit_button.setAttribute("href", "#");
+            edit_button.setAttribute("id", "edit");
+            edit_button.setAttribute(
+              "data_oldBookmarkName",
+              element.split(",")[0]
+            );
+            edit_button.innerHTML =
+              '<span class="material-symbols-outlined">edit</span>';
+            edit_button.addEventListener("click", edit_bookmark);
+
+            var delete_button = document.createElement("a");
+            delete_button.setAttribute("href", "#");
+            delete_button.setAttribute("id", "edit");
+            delete_button.setAttribute(
+              "data_oldBookmarkName",
+              element.split(",")[0]
+            );
+            delete_button.innerHTML =
+              '<span class="material-symbols-outlined">delete</span>';
+            delete_button.addEventListener("click", delete_bookmark);
+
+            // add edit and delete buttons to div
+            update_holder_div.appendChild(edit_button);
+            update_holder_div.appendChild(delete_button);
+
+            // li.appendChild(aTag2);
+            li.appendChild(update_holder_div);
             ul.appendChild(li);
           }
         });
