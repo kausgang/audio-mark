@@ -56,7 +56,38 @@ function BookmarkList(props) {
     alert("Bookmark name has been updated. Continue.");
   };
 
-  const delete_bookmark = (e) => {};
+  const delete_bookmark = (e) => {
+    let old_bookmark_name =
+      e.target.parentNode.attributes.data_oldBookmarkName.value;
+
+    console.log(old_bookmark_name);
+
+    // update bookmark name
+    fetch("/delete_bookmark", {
+      method: "POST",
+      body: JSON.stringify({
+        filename: filename,
+        old_bookmark_name,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((response) => {
+      const status = response.status;
+      console.log("status = ", status);
+
+      // if (status !== 200) {
+      //   alert("error occured writing to bookmark record");
+      // } else {
+      //   // if(bookmark_name!==null)
+      //   // alert("Bookmark created successfully");
+
+      //   setBookmark_timestamp([bookmark_name, timestamp]);
+      // }
+    });
+
+    alert("Bookmark name has been Deleted. Continue.");
+  };
 
   function send_timestamp(e) {
     let timestamp_value = e.target.attributes.data_timestamp.value;
@@ -113,7 +144,7 @@ function BookmarkList(props) {
             delete_button.setAttribute("id", "edit");
             delete_button.setAttribute(
               "data_oldBookmarkName",
-              element.split(",")[0]
+              element.split(",")[0] + "," + element.split(",")[1]
             );
             delete_button.innerHTML =
               '<span class="material-symbols-outlined">delete</span>';
