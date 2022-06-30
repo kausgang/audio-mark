@@ -93,12 +93,14 @@ function PlayAudio(props) {
           />
         </div>
       </div>
-      <BookmarkList
-        filename={filename}
-        bookmark_timestamp={bookmark_timestam}
-        reset_bookmark_timestamp={reset_bookmark_timestamp}
-        bookmark_seek={bookmark_seek}
-      />
+      <div className="d-flex justify-content-center">
+        <BookmarkList
+          filename={filename}
+          bookmark_timestamp={bookmark_timestam}
+          reset_bookmark_timestamp={reset_bookmark_timestamp}
+          bookmark_seek={bookmark_seek}
+        />
+      </div>
     </div>
   );
 }
