@@ -62,31 +62,37 @@ function BookmarkList(props) {
 
     console.log(old_bookmark_name);
 
-    // update bookmark name
-    fetch("/delete_bookmark", {
-      method: "POST",
-      body: JSON.stringify({
-        filename: filename,
-        old_bookmark_name,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then((response) => {
-      const status = response.status;
-      console.log("status = ", status);
+    let delete_bookmark_prompt = prompt(
+      "type DELETE BOOKMARK to delete bookmark"
+    );
 
-      // if (status !== 200) {
-      //   alert("error occured writing to bookmark record");
-      // } else {
-      //   // if(bookmark_name!==null)
-      //   // alert("Bookmark created successfully");
+    if (delete_bookmark_prompt === "DELETE BOOKMARK") {
+      // update bookmark name
+      fetch("/delete_bookmark", {
+        method: "POST",
+        body: JSON.stringify({
+          filename: filename,
+          old_bookmark_name,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((response) => {
+        const status = response.status;
+        console.log("status = ", status);
 
-      //   setBookmark_timestamp([bookmark_name, timestamp]);
-      // }
-    });
+        // if (status !== 200) {
+        //   alert("error occured writing to bookmark record");
+        // } else {
+        //   // if(bookmark_name!==null)
+        //   // alert("Bookmark created successfully");
 
-    alert("Bookmark name has been Deleted. Continue.");
+        //   setBookmark_timestamp([bookmark_name, timestamp]);
+        // }
+      });
+
+      alert("Bookmark name has been Deleted. Continue.");
+    } else return 1;
   };
 
   function send_timestamp(e) {
