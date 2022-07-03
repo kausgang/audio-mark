@@ -8,4 +8,6 @@ Chapter 5,4626.513359
 5.3 - What to do when mind wanders away,5607.534221
 Chapter 6,6603.41753
 Chapter 7,7086.213317
-7600.519266 -  Seconds,7600.519266
+Chapter 8,8358.752556
+Chapter 9,9253.359752
+10212.819758 -  Seconds,10212.819758
