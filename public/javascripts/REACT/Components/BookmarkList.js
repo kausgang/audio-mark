@@ -1,3 +1,5 @@
+// const { async } = require("replace/bin/shared-options");
+
 function BookmarkList(props) {
   // GET LIST OF BOOKMARK THROUGH API CALL
   let filename = props.filename;
@@ -21,9 +23,22 @@ function BookmarkList(props) {
   // When using useEffect with a second array argument, React will run the callback after mounting (initial render)
   //  and after values in the array have changed. Since we pass an empty array, it will run only after mounting
 
-  const edit_bookmark = (e) => {
+  // const edit_bookmark = (e) => {
+  const edit_bookmark = async (e) => {
     // capture the name user wants to give to the bookmark
-    let new_bookmark_name = prompt("Bookmark Name ?");
+    // let new_bookmark_name = prompt("Bookmark Name ?");
+    const { value: new_bookmark_name } = await Swal.fire({
+      title: "Update Bookmark",
+      input: "text",
+      inputLabel: "Enter the new Bookmark name",
+      showCancelButton: true,
+      icon: "warning",
+      inputValidator: (value) => {
+        if (!value) {
+          return "You need to write something!";
+        }
+      },
+    });
 
     let old_bookmark_name =
       e.target.parentNode.attributes.data_oldBookmarkName.value;
@@ -51,20 +66,40 @@ function BookmarkList(props) {
 
       //   setBookmark_timestamp([bookmark_name, timestamp]);
       // }
+
+      Swal.fire({
+        title: "Bookmark Updated",
+        text: "Bookmark Updated - Continue",
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
     });
 
-    alert("Bookmark name has been updated. Continue.");
+    // alert("Bookmark name has been updated. Continue.");
   };
 
-  const delete_bookmark = (e) => {
+  async function delete_bookmark(e) {
     let old_bookmark_name =
       e.target.parentNode.attributes.data_oldBookmarkName.value;
 
     console.log(old_bookmark_name);
 
-    let delete_bookmark_prompt = prompt(
-      "type DELETE BOOKMARK to delete bookmark"
-    );
+    // let delete_bookmark_prompt = prompt(
+    //   "type DELETE BOOKMARK to delete bookmark"
+    // );
+
+    const { value: delete_bookmark_prompt } = await Swal.fire({
+      title: "Delete Bookmark",
+      input: "text",
+      inputLabel: "Type DELETE BOOKMARK to delete the bookmark",
+      showCancelButton: true,
+      icon: "warning",
+      inputValidator: (value) => {
+        if (!value) {
+          return "You need to write something!";
+        }
+      },
+    });
 
     if (delete_bookmark_prompt === "DELETE BOOKMARK") {
       // update bookmark name
@@ -80,20 +115,16 @@ function BookmarkList(props) {
       }).then((response) => {
         const status = response.status;
         console.log("status = ", status);
-
-        // if (status !== 200) {
-        //   alert("error occured writing to bookmark record");
-        // } else {
-        //   // if(bookmark_name!==null)
-        //   // alert("Bookmark created successfully");
-
-        //   setBookmark_timestamp([bookmark_name, timestamp]);
-        // }
       });
 
-      alert("Bookmark name has been Deleted. Continue.");
+      Swal.fire({
+        title: "Bookmark Deleted",
+        text: "Bookmark Deleted - Continue",
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
     } else return 1;
-  };
+  }
 
   function send_timestamp(e) {
     let timestamp_value = e.target.attributes.data_timestamp.value;
@@ -169,25 +200,6 @@ function BookmarkList(props) {
       .catch(function (error) {
         console.log(error);
       });
-
-    // if(props.bookmark_timestamp[0]!=null){
-    //   let ul=document.getElementById('bookmark_list');
-    //   // console.log(bookmark_list)
-    //   let li = document.createElement("li");
-    //   li.addEventListener("click",send_timestamp)
-    //   var aTag = document.createElement('a');
-    //   aTag.setAttribute('href',"#");
-    //   aTag.innerText = props.bookmark_timestamp[0];
-    //   aTag.setAttribute("data_timestamp",props.bookmark_timestamp[1])
-    //   li.appendChild(aTag)
-
-    //   //ADD OTHER ATTRIBUTES
-
-    //   ul.appendChild(li);
-
-    //   // RESET THE VALUE OF BOOKMARK_TIMESTAMP IN PARENT TO STOP RERENDERING
-    //   props.reset_bookmark_timestamp()
-    // }
   });
 
   return (

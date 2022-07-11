@@ -55,7 +55,13 @@ function PlayAudio(props) {
     let SECONDS = sound.duration();
     // Show duration in hh:mm:ss
     var result = new Date(SECONDS * 1000).toISOString().substring(11, 19);
-    alert("Track Duration - " + result + "\nor " + SECONDS + " Seconds");
+    // alert("Track Duration - " + result + "\nor " + SECONDS + " Seconds");
+    Swal.fire({
+      title: "Track Duration " + result,
+      text: "Duration " + SECONDS + " Seconds",
+      icon: "info",
+      confirmButtonText: "Cool",
+    });
   };
 
   return (
